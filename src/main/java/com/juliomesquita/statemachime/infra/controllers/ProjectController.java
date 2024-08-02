@@ -19,6 +19,7 @@ public class ProjectController {
 
     @PostMapping(value = "/{projectId}")
     public ResponseEntity<Project> inProgressProject(@PathVariable("projectId") UUID projectId){
-        return ResponseEntity.ok(this.projectService.inProgressProject(projectId));
+//        return ResponseEntity.ok(this.projectService.inProgressProject(projectId));
+        return null;
     }
 }
