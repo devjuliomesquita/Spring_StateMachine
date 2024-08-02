@@ -4,8 +4,6 @@ import com.juliomesquita.statemachime.domain.enums.EventsType;
 import com.juliomesquita.statemachime.domain.enums.StatesType;
 import org.springframework.statemachine.StateMachine;
 
-import java.util.UUID;
-
 public interface SendEvent {
-    void sendMessage(UUID projectId, StateMachine<StatesType, EventsType> sm, EventsType event);
+    Object sendMessage(Object object, StateMachine<StatesType, EventsType> sm, EventsType event);
 }

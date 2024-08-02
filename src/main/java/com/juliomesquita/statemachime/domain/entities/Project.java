@@ -31,7 +31,7 @@ public class Project {
     @Column(name = "project_type")
     private ProjectType type;
 
-    @OneToOne(mappedBy = "project")
+    @OneToOne(mappedBy = "project",cascade = CascadeType.ALL)
     @JoinColumn(name = "project_budget_id", referencedColumnName = "budget_id")
     private Budget budget;
 

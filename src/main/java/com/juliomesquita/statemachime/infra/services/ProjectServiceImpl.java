@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ProjectServiceImpl implements ProjectService {
+class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
@@ -37,8 +37,11 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project inProgressProject(BudgetDTO budgetDTO) {
         StateMachine<StatesType, EventsType> sm = this.recoveryState.recovery(budgetDTO.projectId());
-        this.sendEvent.sendMessage(budgetDTO.projectId(), sm, EventsType.PLANNED_IN_PROGRESS);
-        return this.projectRepository.findById(budgetDTO.projectId()).orElseThrow();
+        Object object = this.sendEvent.sendMessage(budgetDTO.projectId(), sm, EventsType.PLANNED_IN_PROGRESS);
+        if(object instanceof Project project){
+            return project;
+        }
+        return null;
     }
 
     @Override
