@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: statemachime
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ssm
+    username: ssm
+    password: ssm
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop

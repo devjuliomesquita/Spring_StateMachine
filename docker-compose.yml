@@ -1,0 +1,21 @@
+services:
+  postgres_ssm:
+    container_name: postgres_db_ssm
+    image: postgres:15.6
+    environment:
+      POSTGRES_USER: ssm
+      POSTGRES_PASSWORD: ssm
+      POSTGRES_DB: ssm
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  postgres:
